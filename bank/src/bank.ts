@@ -43,6 +43,17 @@ class Bank {
     private findAccount(accNum: string) : BankAccount | undefined {
         return this.accounts.find((acc) => (acc.accountNumber == accNum));
     }
+
+    public deposit(amount: number, accountNumber: string) : void {
+        const account = this.findAccount(accountNumber);
+        if (!account) {
+            throw new Error('Account does not exist');
+        }
+        if (amount < 0) {
+            throw new Error('Invalid deposit amount');
+        }
+        account.balance += amount;
+    }
 }
 
 export default Bank;
