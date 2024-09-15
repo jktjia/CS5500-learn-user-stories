@@ -41,3 +41,35 @@ try {
 } catch (_) {
     console.log('Scenario 5 passes');
 }
+
+// withdraw money from existing account
+bank.withdraw(8, '123456');
+if (acc.balance == 8) {
+    console.log('Scenario 6 passes');
+} else {
+    console.log('Scenario 6 fails');
+}
+
+// withdraw money from nonexistant account
+try {
+    bank.withdraw(1, 'account does not exist');
+    console.log('Scenario 7 fails');
+} catch (_) {
+    console.log('Scenario 7 passes');
+}
+
+// withdraw negative money
+try {
+    bank.withdraw(-20, '123456');
+    console.log('Scenario 8 fails');
+} catch (_) {
+    console.log('Scenario 8 passes');
+}
+
+// withdraw too much money
+try {
+    bank.withdraw(100, '123456');
+    console.log('Scenario 9 fails');
+} catch (_) {
+    console.log('Scenario 9 passes');
+}
