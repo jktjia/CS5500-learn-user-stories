@@ -79,7 +79,15 @@ class Bank {
             throw new Error('Insufficient funds to withdraw');
         }
         account.balance -= amount;
-    }    
+    }
+    
+    public checkBalance(accountNumber: string) : void {
+        const account = this.findAccount(accountNumber);
+        if (!account) {
+            throw new Error('Account does not exist');
+        }
+        console.log('Account: %d \nBalance: %d', account.accountNumber, account.balance);
+    }
 }
 
 export default Bank;
